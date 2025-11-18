@@ -2,6 +2,23 @@
 
 This project predicts **credit default risk** and explains model decisions using **SHAP** for transparency in financial contexts.
 
+##  Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/yourusername/credit-risk-shap-analysis.git
+cd credit-risk-shap-analysis
+pip install -r requirements.txt
+
+
+---
+
+With this, your repo is **complete and reproducible**:  
+- README.md → portfolio summary  
+- report.pdf → detailed analysis  
+- requirements.txt → reproducible environment  
+
 ##  Repository structure
 - data/credit_risk.csv
 - notebooks/credit_risk_shap.ipynb
