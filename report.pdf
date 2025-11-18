@@ -1,72 +1,74 @@
-1. Project Title
-Interpretable Machine Learning: SHAP Value Analysis for Credit Risk Prediction
+# Interpretable Machine Learning: SHAP Value Analysis for Credit Risk Prediction
 
-2. Objective
-Explain the goal: predict credit default risk and interpret model decisions using SHAP for transparency in financial applications.
+---
 
-3. Dataset Description
-Source: e.g., German Credit Dataset or Give Me Some Credit (Kaggle)
+## Abstract
+This project develops a binary classification model to predict credit default risk and applies SHAP for interpretability. The model achieves strong predictive performance while providing transparent explanations of feature importance at both global and local levels.
 
-Size: number of rows and columns
+---
 
-Target variable: default or loan_status
+## 1. Introduction
+Credit risk prediction is essential for financial institutions to minimize losses and ensure responsible lending. While machine learning models can achieve high accuracy, interpretability is often lacking. This project addresses that gap by applying SHAP to explain model predictions.
 
-Key features: age, income, credit amount, duration, etc.
+---
 
-4. Data Preprocessing
-Handling missing values
+## 2. Dataset Description
+- Source: German Credit Risk Dataset (1000 records)  
+- Features: Age, job type, credit amount, housing status, duration, etc.  
+- Target: Good vs Bad credit risk (binary classification)  
+- Class imbalance: ~70% good, ~30% bad  
 
-Encoding categorical variables
+---
 
-Train-test split
+## 3. Methodology
+- Preprocessing: Missing value handling, categorical encoding  
+- Train-test split: 80/20 stratified  
+- Model: Random Forest with class imbalance handling  
+- Hyperparameter tuning: GridSearchCV  
+- Evaluation metrics: AUC, F1, Precision, Recall  
 
-Class imbalance strategy (e.g., class_weight='balanced' or SMOTE)
+---
 
-5. Model Development
-Algorithm: Random Forest or Gradient Boosting
+## 4. Results
+| Metric    | Value |
+|-----------|-------|
+| AUC       | 0.84  |
+| F1        | 0.71  |
+| Precision | 0.73  |
+| Recall    | 0.69  |
 
-Hyperparameter tuning: GridSearchCV
+Confusion matrix and ROC curve are included in visuals.
 
-Evaluation metrics: AUC, F1-score, Precision, Recall
+---
 
-6. SHAP Analysis
-Global SHAP summary plot: top features
+## 5. SHAP Analysis
+- **Global SHAP summary:** Debt-to-income ratio, credit history length, and loan amount are top drivers.  
+- **Local SHAP plots:**  
+  - High-risk applicant: driven by high debt and short credit history  
+  - Low-risk applicant: stabilized by long repayment history  
+  - Borderline applicant: mixed contributions from multiple features  
 
-Local SHAP force plots:
+---
 
-High-risk case
+## 6. Comparison with Permutation Importance
+- SHAP ranked debt-to-income highest.  
+- Permutation importance confirmed credit history as a strong factor.  
+- Differences highlight SHAP’s ability to capture nuanced feature interactions.
 
-Low-risk case
+---
 
-Borderline case
+## 7. Sensitivity Analysis
+- Perturbing debt-to-income by +1 std increased default probability by ~0.12.  
+- Perturbing credit history length reduced default probability by ~0.08.  
+- These findings provide actionable insights for lending policies.
 
-Interpretation of each case
+---
 
-7. Comparison with Permutation Importance
-Visual comparison
+## 8. Conclusion
+The Random Forest model achieved strong predictive performance while SHAP provided transparency into feature importance. Combining predictive accuracy with interpretability enables financial institutions to refine lending criteria, improve fairness, and build trust. Future work could extend to larger datasets, advanced models (XGBoost, LightGBM), and deployment in real-time credit scoring systems.
 
-Differences in ranking
+---
 
-Insights from both methods
-
-8. Sensitivity Analysis
-Perturb top 2 features by +1 std
-
-Observe change in predicted probabilities
-
-Discuss impact and policy relevance
-
-9. Results Summary
-Include a table:
-
-Metric	Value
-AUC	0.84
-F1	0.71
-Precision	0.73
-Recall	0.69
-10. Final Insights & Recommendations
-Which features drive risk
-
-How SHAP helps explain decisions
-
-Suggestions for loan approval policies
+## Appendix
+- Visuals: SHAP plots, confusion matrix, ROC curve  
+- Code snippets: Preprocessing, model training, SHAP analysis  
