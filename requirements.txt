@@ -1,14 +1,18 @@
+# Core libraries for data handling
 pandas==1.5.3
 numpy==1.22.4
+
+# Machine learning
 scikit-learn==1.2.2
 xgboost==1.7.6
+
+# Model interpretability
 shap==0.42.1
+
+# Visualization
 matplotlib==3.7.1
 
-Notes:
-These versions are Colab-compatible and tested for speed and stability.
-
-You can install them with:
-
-bash
-pip install -r requirements.txt
+# Notes:
+# - These versions are Colab-compatible
+# - Tested for speed and stability
+# - Install with: pip install -r requirements.txt
