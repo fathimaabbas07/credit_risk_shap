@@ -1,74 +1,29 @@
-# Interpretable Machine Learning: SHAP Value Analysis for Credit Risk Prediction
+# Credit Risk Prediction with SHAP
 
----
+## 1. Objective
+Build an interpretable ML model to predict credit risk using SHAP.
 
-## Abstract
-This project develops a binary classification model to predict credit default risk and applies SHAP for interpretability. The model achieves strong predictive performance while providing transparent explanations of feature importance at both global and local levels.
+## 2. Dataset
+German Credit Data with 1000 samples and 20 features.
 
----
+## 3. Model
+Used XGBoost classifier with 80/20 train-test split.
 
-## 1. Introduction
-Credit risk prediction is essential for financial institutions to minimize losses and ensure responsible lending. While machine learning models can achieve high accuracy, interpretability is often lacking. This project addresses that gap by applying SHAP to explain model predictions.
+### Evaluation Metrics:
+- AUC: 0.61
+- F1 Score: 0.81
 
----
+## 4. Global Interpretability
+SHAP bar plot shows 'Duration', 'Credit Amount', and 'Age' are most influential features.
 
-## 2. Dataset Description
-- Source: German Credit Risk Dataset (1000 records)  
-- Features: Age, job type, credit amount, housing status, duration, etc.  
-- Target: Good vs Bad credit risk (binary classification)  
-- Class imbalance: ~70% good, ~30% bad  
+## 5. Local Interpretability
+SHAP force plots reveal how individual features push predictions toward high or low risk.
 
----
+## 6. SHAP vs Permutation
+Permutation importance confirms SHAP’s top features. SHAP provides more consistent and interpretable results.
 
-## 3. Methodology
-- Preprocessing: Missing value handling, categorical encoding  
-- Train-test split: 80/20 stratified  
-- Model: Random Forest with class imbalance handling  
-- Hyperparameter tuning: GridSearchCV  
-- Evaluation metrics: AUC, F1, Precision, Recall  
-
----
-
-## 4. Results
-| Metric    | Value |
-|-----------|-------|
-| AUC       | 0.84  |
-| F1        | 0.71  |
-| Precision | 0.73  |
-| Recall    | 0.69  |
-
-Confusion matrix and ROC curve are included in visuals.
-
----
-
-## 5. SHAP Analysis
-- **Global SHAP summary:** Debt-to-income ratio, credit history length, and loan amount are top drivers.  
-- **Local SHAP plots:**  
-  - High-risk applicant: driven by high debt and short credit history  
-  - Low-risk applicant: stabilized by long repayment history  
-  - Borderline applicant: mixed contributions from multiple features  
-
----
-
-## 6. Comparison with Permutation Importance
-- SHAP ranked debt-to-income highest.  
-- Permutation importance confirmed credit history as a strong factor.  
-- Differences highlight SHAP’s ability to capture nuanced feature interactions.
-
----
-
-## 7. Sensitivity Analysis
-- Perturbing debt-to-income by +1 std increased default probability by ~0.12.  
-- Perturbing credit history length reduced default probability by ~0.08.  
-- These findings provide actionable insights for lending policies.
-
----
+## 7. SHAP Sensitivity
+Changing 'Duration' from 48 to 24 months reduced predicted risk from 0.66 to 0.42.
 
 ## 8. Conclusion
-The Random Forest model achieved strong predictive performance while SHAP provided transparency into feature importance. Combining predictive accuracy with interpretability enables financial institutions to refine lending criteria, improve fairness, and build trust. Future work could extend to larger datasets, advanced models (XGBoost, LightGBM), and deployment in real-time credit scoring systems.
-
----
-
-## Appendix
-- Visuals: SHAP plots, confusion matrix, ROC curve  
-- Code snippets: Preprocessing, model training, SHAP analysis  
+SHAP enables transparent credit risk decisions. The model is accurate and interpretable.
